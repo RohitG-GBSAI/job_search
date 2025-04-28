@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mt-5 justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-search"></i> Find Your Perfect Job Match
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h5>How It Works</h5>
+                        <div class="d-flex flex-column flex-md-row justify-content-between">
+                            <div class="text-center p-2">
+                                <div class="bg-dark text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-2" style="width: 50px; height: 50px;">
+                                    <i class="bi bi-upload fs-4"></i>
+                                </div>
+                                <p class="mb-0"><strong>1. Upload Your CV</strong></p>
+                                <p class="small text-muted">PDF or DOCX format</p>
+                            </div>
+                            <div class="text-center p-2">
+                                <div class="bg-dark text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-2" style="width: 50px; height: 50px;">
+                                    <i class="bi bi-robot fs-4"></i>
+                                </div>
+                                <p class="mb-0"><strong>2. AI Analysis</strong></p>
+                                <p class="small text-muted">Skills & experience extracted</p>
+                            </div>
+                            <div class="text-center p-2">
+                                <div class="bg-dark text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-2" style="width: 50px; height: 50px;">
+                                    <i class="bi bi-check-circle fs-4"></i>
+                                </div>
+                                <p class="mb-0"><strong>3. Get Matches</strong></p>
+                                <p class="small text-muted">Personalized job recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="upload-form" action="{{ url_for('upload_cv') }}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="cv_file" class="form-label">Upload Your CV/Resume</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="cv_file" name="cv_file" accept=".pdf,.docx" required>
+                            <label class="input-group-text custom-file-label" for="cv_file">Choose file</label>
+                        </div>
+                        <div class="form-text">Supported formats: PDF, DOCX (Max 16MB)</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="job_title" class="form-label">Desired Job Title (Optional)</label>
+                            <input type="text" class="form-control" id="job_title" name="job_title" placeholder="e.g., Software Developer, Data Analyst">
+                            <div class="form-text">Leave blank to extract from your CV</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="location" class="form-label">Preferred Location (Optional)</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="e.g., San Francisco, Remote">
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" id="submit-btn" class="btn btn-primary" disabled>
+                            <i class="bi bi-search"></i> Find Matching Jobs
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="small text-muted">
+                    <i class="bi bi-shield-lock"></i> Your CV data is processed securely and not shared with third parties.
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> About CV Job Matcher</h5>
+                </div>
+                <div class="card-body">
+                    <p>CV Job Matcher uses advanced AI technology to analyze your resume and find the most relevant job opportunities that match your skills and experience.</p>
+                    
+                    <h6>Key Features:</h6>
+                    <ul>
+                        <li>Intelligent CV parsing and keyword extraction</li>
+                        <li>Skills and experience identification</li>
+                        <li>Personalized job matching algorithm</li>
+                        <li>Relevance scoring for each job opportunity</li>
+                        <li>Quick and easy application process</li>
+                    </ul>
+                    
+                    <p class="mb-0">Start your job search smarter with our AI-powered assistant!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
